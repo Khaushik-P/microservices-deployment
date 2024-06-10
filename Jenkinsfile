@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-	    APP_NAME = "Microservice"
+	    APP_NAME = "microservice"
         RELEASE = "1.0.0"
         DOCKER_USER = "khaushik"
         DOCKER_PASS = 'docker'
