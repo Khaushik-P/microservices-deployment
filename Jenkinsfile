@@ -1,5 +1,14 @@
 pipeline{
     agent any
+    environment {
+	    APP_NAME = "Microservice"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "khaushik"
+        DOCKER_PASS = 'docker'
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+	    JENKINS_API_TOKEN = credentials("")
+    }
     stages{
         stage("Git Checkout"){
             steps{
@@ -9,7 +18,7 @@ pipeline{
          stage("Docker build"){
             steps{
                 sh 'docker build -t khaushik/api-server .'
-                // sh 'docker tag api-server khaushik/api-server:latest'
+                 sh 'docker tag api-server khaushik/api-server:latest'
                 sh 'docker push khaushik/api-server'
             }
     }
