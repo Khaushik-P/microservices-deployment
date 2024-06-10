@@ -8,9 +8,9 @@ pipeline{
         }
         stage("Docker build"){
             steps{
-                sh 'docker build khaushik/api-server .'
-                sh 'docker tag api-server khaushik/api-server:latest'
-                sh 'docker push khaushik/api-server'
+                sh 'docker build -t khaushik/email-service .'
+                // sh 'docker tag api-server khaushik/api-server:latest'
+                sh 'docker push khaushik/email-service'
             }
         }
     }
